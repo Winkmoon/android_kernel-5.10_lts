@@ -3868,7 +3868,7 @@ int copy_hugetlb_page_range(struct mm_struct *dst, struct mm_struct *src,
 
 #ifdef CONFIG_ARCH_WANT_HUGE_PMD_SHARE
 		/* If the pagetables are shared, there is nothing to do */
-		if (atomic_read(&virt_to_page(dst_pte)->pt_share_count))
+		if (hugetlb_pmd_shared(dst_pte))
 			continue;
 #endif
 
