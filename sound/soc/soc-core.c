@@ -1054,7 +1054,6 @@ _err_defer:
 	return -EPROBE_DEFER;
 }
 EXPORT_SYMBOL_GPL(snd_soc_add_pcm_runtime);
-
 static int soc_init_pcm_runtime(struct snd_soc_card *card,
 				struct snd_soc_pcm_runtime *rtd)
 {
