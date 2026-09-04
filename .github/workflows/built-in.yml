@@ -1,9 +1,9 @@
-name: Build Kernel
+name: 构建测试上游
 env:
   TZ: Asia/Shanghai
   ANDROID_VERSION: 'android12'
   KERNEL_VERSION: '5.10'
-  KERNEL_NAME: 'Xinran_test'
+  KERNEL_NAME: 'Xinran'
 on:
   workflow_dispatch:
     inputs:
@@ -55,16 +55,16 @@ jobs:
             neofetch
           lscpu
           neofetch
-          wget -O LLVM-20.1.0-Linux-X64.tar.xz https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.0/LLVM-20.1.0-Linux-X64.tar.xz
-          tar -xvaf LLVM-20.1.0-Linux-X64.tar.xz
-          mv LLVM-20.1.0-Linux-X64 aosp-clang
-          rm LLVM-20.1.0-Linux-X64.tar.xz
+          wget -O LLVM-23.1.0-Linux-X64.tar.xz https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.0/LLVM-23.1.0-Linux-X64.tar.xz
+          tar -xvaf LLVM-23.1.0-Linux-X64.tar.xz
+          mv LLVM-23.1.0-Linux-X64.tar.xz aosp-clang
+          rm LLVM-23.1.0-Linux-X64.tar.xz
           echo "AOSP_CLANG_PATH=$(pwd)/aosp-clang" >> $GITHUB_ENV
           echo "PATH=$(pwd)/aosp-clang/bin:$PATH" >> $GITHUB_ENV
       - name: 初始化源码仓库
         run: |
           rm -rf kernel_workspace && mkdir kernel_workspace && cd kernel_workspace
-          git clone --depth=1 https://github.com/Winkmoon/android_kernel-5.10_lts -b android12-5.10 common
+          git clone --depth=1 https://github.com/ramabondanp/android_kernel_common-5.10 -b android12-5.10-staging common
           rm common/android/abi_gki_protected_exports_* || true
       
       - name: 添加 ReSukiSU
