@@ -57,8 +57,8 @@ jobs:
           neofetch
           wget -O LLVM-23.1.0-Linux-X64.tar.xz https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.0/LLVM-23.1.0-Linux-X64.tar.xz
           tar -xvaf LLVM-23.1.0-Linux-X64.tar.xz
-          mv LLVM-23.1.0-Linux-X64.tar.xz aosp-clang
-          rm LLVM-23.1.0-Linux-X64.tar.xz
+          mv LLVM-23.1.0-Linux-X64 aosp-clang
+          rm -rf LLVM-23.1.0-Linux-X64.tar.xz
           echo "AOSP_CLANG_PATH=$(pwd)/aosp-clang" >> $GITHUB_ENV
           echo "PATH=$(pwd)/aosp-clang/bin:$PATH" >> $GITHUB_ENV
       - name: 初始化源码仓库
